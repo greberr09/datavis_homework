@@ -1,2 +1,2 @@
 # datavis_homework
-Rebecca Greber homeowrk
+Rebecca Greber homework
