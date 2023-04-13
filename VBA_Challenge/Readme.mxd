@@ -1,11 +1,9 @@
-This script loops through a series of spreadsheets in a workbook and calculates various statistics on the annual change in price for all of the stock symbols in the sheet.
+This script loops through a series of spreadsheets in a workbook and calculates various statistics on the annual change in price for all of the stock symbols in the sheet.  The script processes the worksheets in the workbook sequentially.   A shell script might be written to launch and process each worksheet essentially simultaneously, and to assign it to a single CPU, but that is beyond the scope of this assignment.  Also, given the size of the files, it might not gain any efficiencies in processing speed and might even slow down processing.
 
-Because it adds new columns to each sheet as it runs,
-to rerun the new columns have to be deleted or the script rerun over another copy of the
-original data.  It would be convenient for testing to have a reset function that removed the added columns.
+Because it adds new columns to each sheet as it runs, to rerun, the new columns have to be deleted or the script rerun over another copy of the original data.  It would be convenient for testing to have a reset function that removed the added columns.    For this particular functionality, it would not be necessary to add the columns and new header names might be added instead, with the data then placed in those columns, but for purposes of the assignment, columns were to be added.
 
 Screen shots are included showing the results for each of five sheets in the smaller workbook with sheets named by letters, and the larger workbook with three sheets named by year.
 
 As documented in the code, the calculation for the opening price for the year, and the closing price for the year, depends on the data being ordered by year within each ticker.  The data here seemed to be in that format, so this method was used because it avoids much more complicated code if the dates had to be compared for each row.  Speed and efficiency are important given the large size of the sheets, but for production code this might not be the best way of doing it and more robust error handling and less dependency on sorted data would probably be better.  On the other hand, if this data is pulled from a database in sorted order, being the most efficient might be preferable.
 
-There are some updates and calculations that are updated using a variable name  and others where the column to be updated is hard coded.  For a production environment, less hard coding would be better. 
+There are some updates and calculations that are updated using a variable name, and others, such as the totals for the sheet, where the column to be updated is hard coded.  For a production environment, it would be better to have variables for all of those as well. 
