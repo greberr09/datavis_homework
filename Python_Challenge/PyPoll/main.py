@@ -150,12 +150,10 @@ with open(csvpath, encoding='UTF-8') as csvfile:
 
         # Add this candidate's information to the output.
         # The string formattins is from multiple searches of StackOverflow, Python documentation,
-        # and Geeks to Geeks.  Create the string outside the f-string because of restriction
+        # and Geeks to Geeks.  Create the percent string outside the f-string because of restriction
         # on having quotation marks inside the curly brackets.  
 
         percent_str = "{0:.3f}%".format(candidatePercent) 
-
-        # data+=(f"Total: ${total_earnings:,.2f}
 
         data+=(f"{candidates[cntr]}:  {percent_str}  ({candidateVotes:,.0f}) \n\n")
 
@@ -167,7 +165,7 @@ with open(csvpath, encoding='UTF-8') as csvfile:
     data+=(f"-------------------------\n")
 
 
-# display results to terminal
+    # display results to terminal
 
     print(data)
 
