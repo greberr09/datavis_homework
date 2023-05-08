@@ -8,13 +8,13 @@ import string
 from datetime import datetime
 
 #--------------------------------------------------------------------------
-#  This program is designed to help a small, rural town modernize its vote-counting process.
+#   This program is designed, per the requirements, to help a small town to modernize its vote-counting process.
 #
-#   The polling data is provided in the file election_data.csv. 
+#   The election data is contained in the folder "Resources," in the  .csv file "election_data.csv". 
 # 
-#   The dataset is composed of three columns: "Voter ID", "County", and "Candidate". 
+#   Each row in the election data has three columns: "Ballot ID", "County", and "Candidate". 
 # 
-#   This Python script that analyzes the votes and calculates each of the following values:
+#   This Python script reads the data one row at a time, analyzes the votes, and calculates each of the following:
 #
 #       The total number of votes cast
 #       A complete list of candidates who received votes
@@ -22,15 +22,17 @@ from datetime import datetime
 #       The total number of votes each candidate won
 #       The winner of the election based on popular vote
 #
-#   The program outputs its total calculations to the terminal and also 
-#   exports them to a text file
-#---------------------------------------------------------------------------
+#   The program outputs the election result calculations to the terminal and also 
+#   exports them to a text file.  Per requirements, that file is in the folder "analysis".  
+#   It is called "election_results.txt," and will be created if necessary or overwritten
+#   if it already exists in the folder.
+# #---------------------------------------------------------------------------
 
 # Set path for input file
 csvpath = os.path.join(".", "Resources", "election_data.csv")
 
 # -----------------------------------
-# Open the CSV file.  Using with open means that
+# Open the CSV file.  Using "with open" means that
 # the file will be closed automatically at the end of the indent block
 # -----------------------------------
 
@@ -42,8 +44,8 @@ with open(csvpath, encoding='UTF-8') as csvfile:
     csv_header = next(csvreader)
     
     # -----------------------------------
-    # initialize variables.  This might not be very "Pythonic," but I think it helps reader
-    # to know what is going on and helps coders to think about type checking and missing values
+    # initialize variables.  This might not be very "Pythonic," but I think it helps the reader
+    # to know what is going on and helps coders to think about type checking and missing values.
     # -----------------------------------
     
     # The list of candidate names, which indexes to the votes
@@ -55,7 +57,7 @@ with open(csvpath, encoding='UTF-8') as csvfile:
     votes = []
  
     candidateVotes = 0
-    electionTotal= 0
+    electionTotal = 0
     candidatePercent = 0.0
     maxVotes = 0
     cntr = 0
@@ -71,23 +73,22 @@ with open(csvpath, encoding='UTF-8') as csvfile:
     # Loop through file checking if the candidate is in the dictionary.
     # if not, add the candidate to the dictionary and start adding to that candidate's
     # vote count.   If yes, add the vote to the existing candidate total.
-    # Also add the vote to the total vote count for the election, so that
-    # the candidate's percentage of the total vote can be calculated after
-    # all of the rowws have been read.
+    # The candidate's total number of votes and that candidate's percentage of the 
+    # the total votes in the election are calculated after all of the rows have been read.
     # -----------------------------------
 
     for row in csvreader:
 
         # Get the data for this row
         # Ballot and county information are not used in
-        # this application, after they are collected, but might be in another.
-        # 
-
+        # this application, after they are collected in variables, but might be in 
+        # another such as examining for possible voter fraud.
+        
         ballotId = row[0]
         county = row[1]
         candidate = row[2]
 
-        # if the candidate's name is not in the list, add it
+        # if the candidate's name is not in the list, add it.
         # Add a vote total for this candidate and set it to 0
 
         if candidate not in candidates:
@@ -177,7 +178,7 @@ output_path = os.path.join(".", "analysis", "election_results.txt")
 
 #-----------------------------------
 # Open the file using "write" mode. Specify the variable to hold the output.
-# If the file does not exist, it will be created.  If it exists, existing data will be overwritten.
+# If the file does not exist, it will be created.  If it exists, any contents will be overwritten.
 # The file will close automatically after the end of the with open block.
 #-----------------------------------
     

@@ -1,12 +1,15 @@
 This Python script analyzes the records in a two-column input csvfile 
-that has Date and Profit/losses columns.  It outputs its final calculations for the overall dataset to
+that has Date and Profit/losses columns.  The script outputs its final calculations for the overall dataset to
 a terminal and also to a text file.  The input file was provided in the subdirectory "Resources," and the output
 file is written to the subdirectory "analysis," per the writen requirements.  The program creates the output file
 budget_data.txt if the file does not exist, or overwrites the output file contents if it does exist.
 
-The paths are defined as though from the directory where the main.py file is located, and it is assumed that python is 
-run from that directory.  To call the program, you have to cd into the appropriate directory and call it usiing Python,
-or you can execute it from that directory using a development tool such as VBS studio.
+-------------------------------------------------------------------------------------------------------------
+The paths are defined as though from the directory where the "main.py" file is located, and it is assumed that python is 
+run from that directory.  To call the program,  cd into the appropriate directory and call main.py usiing Python,
+or it can be executed from that directory using a development tool such as VBS studio.  In any case, the code MUSt be run from within 
+the directory where "main.py" is located.
+-------------------------------------------------------------------------------------------------------------
 
 The program calculates:  
 	The total number of months included in the dataset, 
@@ -15,7 +18,7 @@ The program calculates:
 	The greatest increase in profits (date and amount) over the entire period
 	The greatest decrease in profits (date and amount) over the entire period
 
-The program makes use of the string, os, and csv modules in Python.
+The script makes use of the string, os, and csv modules in Python.
 
 The string formatting and the creation of datatime objects from strings, and printing of datetime objects, are all
 derived from multiple searchs of Stack Overflow, the Python documentation, Geeks to Geeks and PYNative, for how to 
@@ -36,5 +39,4 @@ input before processing, which would be fine for this particular dataset but sor
 on the date format, and what it means, and, even better, a complete date, would be helpful.
 
 The default Python date is Jan 1, 1900 at 00:00:00, and the creation of the date strings depends on using that to set the day of each 
-month entry to 1, and the time to midnight.  A different default also could be defined and used for the missing components.
- 
+month entry to 1, and the time to midnight.  A different default also could be defined and used for the missing components
